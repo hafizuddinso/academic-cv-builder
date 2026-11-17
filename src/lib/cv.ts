@@ -15,12 +15,12 @@ export type CVData = {
 };
 
 export const STEPS = [
-  { short: 'Identity', label: 'Personal details', hint: 'Your academic identity, links and contact information.' },
-  { short: 'Profile', label: 'Research profile', hint: 'An academic summary and focused research interests.' },
-  { short: 'Education', label: 'Education', hint: 'Degrees, thesis topics and academic achievements.' },
-  { short: 'Research', label: 'Research & papers', hint: 'Research projects and scholarly publications.' },
-  { short: 'Experience', label: 'Experience & projects', hint: 'Professional work and selected technical projects.' },
-  { short: 'Additional', label: 'Skills & awards', hint: 'Technical expertise, teaching, awards and more.' }
+  { short: 'Identity', label: 'Personal details', hint: 'Name and contact details.' },
+  { short: 'Profile', label: 'Research profile', hint: 'A short summary of your research interests.' },
+  { short: 'Education', label: 'Education', hint: 'Degrees, thesis work and relevant study.' },
+  { short: 'Research', label: 'Research & papers', hint: 'Research work and publications.' },
+  { short: 'Experience', label: 'Experience & projects', hint: 'Work experience and projects.' },
+  { short: 'Additional', label: 'Skills & awards', hint: 'Skills, awards and languages.' }
 ] as const;
 
 /** Entirely fictional example data. No real applicant's personal data is bundled. */

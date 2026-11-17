@@ -1,10 +1,17 @@
 {
   "name": "academic-cv-builder",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
-  "description": "Free open-source academic CV and scholarship resume builder — no accounts, no database, no API keys",
+  "description": "A browser-based CV editor for PhD and scholarship applications.",
   "license": "MIT",
-  "keywords": ["academic-cv", "resume-builder", "phd", "scholarship", "researcher-portfolio", "pdf-export", "privacy-first", "nextjs", "vercel"],
+  "keywords": [
+    "academic-cv",
+    "phd",
+    "scholarship",
+    "cv-builder",
+    "researchers",
+    "nextjs"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -13,10 +13,10 @@ export default function SharedCVPage() {
     parseSharedCV(window.location.hash).then(setCV).catch(e => setError(e instanceof Error ? e.message : 'Could not open this CV.'));
   }, []);
   return <div className="public-wrap">
-    <div className="public-toolbar"><a href="/" className="brand-mini">ACADEMIC CV <span>/ SHARED PROFILE</span></a>
+    <div className="public-toolbar"><a href="/" className="brand-mini">ACADEMIC CV <span>/ SHARED COPY</span></a>
       {cv && <button type="button" className="btn btn-primary" onClick={() => window.print()}><Download size={15}/> Save as PDF</button>}
     </div>
     {cv ? <div className="public-paper"><CVDocument cv={cv}/></div> :
-      <div className="shared-empty"><h1>{error ? 'Unable to open this CV' : 'Opening shared CV…'}</h1><p>{error || 'Decoding the CV in your browser.'}</p><a href="/" className="btn btn-outline"><ArrowLeft size={15}/> Back to editor</a></div>}
+      <div className="shared-empty"><h1>{error ? 'Unable to open this CV' : 'Opening CV…'}</h1><p>{error || 'This may take a moment.'}</p><a href="/" className="btn btn-outline"><ArrowLeft size={15}/> Back to editor</a></div>}
   </div>;
 }
