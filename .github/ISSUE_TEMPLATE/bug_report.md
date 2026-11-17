@@ -1,21 +1,15 @@
 ---
 name: Bug report
-about: Report a reproducible problem in the CV editor
+description: Report a problem in Academic CV Studio
 labels: bug
 ---
 
 **What happened?**
 
-**Steps to reproduce**
-1.
-2.
-3.
+**Steps to reproduce (with fictional sample data only):**
 
-**Expected result**
+**Expected result:**
 
-**Environment**
-- Browser / version:
-- Local or Vercel:
-- Supabase configured? (yes/no, **do not include keys**):
+**Browser and operating system:**
 
-**Screenshot (redact private CV information)**
+**Do not include real CV information, share links containing personal details, or private files in public issues.**

@@ -4,7 +4,7 @@ export type Project = { id: string; title: string; year: string; details: string
 
 export type CVData = {
   name: string; headline: string; affiliation: string; email: string; phone: string; location: string;
-  linkedin: string; github: string; orcid: string; website: string; slug: string;
+  linkedin: string; github: string; orcid: string; website: string;
   showPhone: boolean; showReferences: boolean;
   summary: string; interests: string;
   education: Entry[]; research: Entry[]; publications: Publication[];
@@ -23,61 +23,57 @@ export const STEPS = [
   { short: 'Additional', label: 'Skills & awards', hint: 'Technical expertise, teaching, awards and more.' }
 ] as const;
 
+/** Entirely fictional example data. No real applicant's personal data is bundled. */
 export const starterCV: CVData = {
-  name: 'Hafizuddin',
-  headline: 'Cybersecurity & Network Systems Researcher · Applied Cryptography · IoT',
-  affiliation: 'PhD Student in Network Engineering · Universitat Politècnica de Catalunya (UPC)',
-  email: 'hafizuddin@upc.edu',
-  phone: '', // Intentionally omitted from public GitHub source. Add in the editor if desired.
-  location: 'Barcelona, Spain',
-  linkedin: 'https://www.linkedin.com/in/hafizuddinso',
-  github: 'https://github.com/hafizuddinso',
-  orcid: 'https://orcid.org/0009-0004-5596-5691',
-  website: '', slug: 'hafizuddin', showPhone: false, showReferences: false,
-  summary: 'PhD student in Network Engineering at UPC, with a background in cybersecurity, networking, IoT, and IT operations. My MSc research at LETI involved developing and evaluating a Tor-based communication framework using AES-GCM and ECDH, resulting in a first-author IEEE conference publication and oral presentation. My proposed doctoral research will compare classical, post-quantum, and hybrid circuit-establishment approaches, focusing on performance and traffic-analysis resistance. I also bring practical experience in software development, hardware integration, network administration, and technical training.',
-  interests: 'Post-Quantum Cryptography, Tor/Onion Services, Secure Communication, Network and System Security, Privacy-Enhancing Technologies, Threat Modelling, Hardware Security, AI Security, Security Evaluation',
+  name: 'Alex Example',
+  headline: 'PhD Researcher · Sustainable Computing & Data Systems',
+  affiliation: 'Doctoral Researcher · Example University',
+  email: 'researcher@example.com',
+  phone: '',
+  location: 'Example City, Country',
+  linkedin: '',
+  github: 'https://github.com/example',
+  orcid: '',
+  website: '',
+  showPhone: false,
+  showReferences: false,
+  summary: 'Doctoral researcher interested in sustainable computing and responsible data systems. My work explores practical ways to improve system performance while reducing resource use. I combine experimental methods, software prototyping, and clear technical communication. I am interested in interdisciplinary collaboration and research that can be independently reproduced.',
+  interests: 'Sustainable Computing, Data Systems, Performance Evaluation, Reproducible Research, Open Science',
   education: [
-    { id: 'edu1', title: 'PhD in Network Engineering', organization: 'Universitat Politècnica de Catalunya (UPC)', location: 'Barcelona, Spain', period: 'October 2026 – Present', details: 'Research topic: Post-Quantum Onion Routing: Security, Performance and Traffic-Analysis Resistance.\nSupervisor: Prof. Juan Hernández Serrano, Department of Network Engineering (ENTEL).\nResearch group: Information Security Group (ISG-MAK).' },
-    { id: 'edu2', title: 'MSc in Information Systems and Technologies', organization: 'Saint Petersburg Electrotechnical University (LETI)', location: 'St. Petersburg, Russia', period: 'September 2024 – June 2026', details: 'GPA: 4.62 / 5.00.\nThesis: Framework for Safe Communication in the Non-Indexed Web (Hidden Web).\nSupervisor: Dr. Elena Fedorchenko, Department of Information Security.\nFunding: Open Doors Russian Olympiad Scholarship – Full Sponsorship.' },
-    { id: 'edu3', title: 'BSc in Computer Science and Engineering', organization: 'Daffodil International University (DIU)', location: 'Dhaka, Bangladesh', period: 'September 2018 – June 2021', details: 'CGPA: 2.77 / 4.00.\nThesis: IoT-Based Automatic Railway Gate Control System.\nDepartment: Computer Science and Engineering; Faculty: Science and Information Technology.' }
+    { id: 'edu1', title: 'PhD in Computer Science', organization: 'Example University', location: 'Example City, Country', period: '2024 – Present', details: 'Research area: Efficient and sustainable data processing.\nFocus: Experimental evaluation, performance analysis and reproducible methods.' },
+    { id: 'edu2', title: 'MSc in Computing', organization: 'Sample Institute of Technology', location: 'Example City, Country', period: '2022 – 2024', details: 'Thesis: Evaluating resource-aware computing methods.\nCoursework: Data systems, research methods and software engineering.' },
+    { id: 'edu3', title: 'BSc in Computer Science', organization: 'Sample College', location: 'Example City, Country', period: '2018 – 2022', details: 'Project: A prototype dashboard for monitoring system performance.' }
   ],
   research: [
-    { id: 'research1', title: 'Onion Communication – Secure Communication for the Hidden Web', organization: 'Saint Petersburg Electrotechnical University (LETI)', location: '', period: 'September 2025 – June 2026', details: 'Designed and implemented a modular three-layer Application–Service–Network architecture for secure communication over Tor/onion-service environments.\nImplemented three experimental communication modes: plaintext baseline, client-side AES-GCM and ECDH-based mode.\nApplied AES-GCM through the Web Crypto API using randomized 96-bit IVs, maintaining encryption and integrity protection entirely on the client side without exposing encryption keys to the server.\nExamined application-layer confidentiality during Tor bootstrapping and connectivity failures, distinguishing message confidentiality from network anonymity and documenting residual traffic-analysis risks.' },
-    { id: 'research2', title: 'IoT-Based Automatic Railway Gate Control System', organization: 'Daffodil International University', location: '', period: 'January 2021 – June 2021', details: 'Designed and programmed an Arduino-based prototype automating a railway crossing with IR and ultrasonic sensors.\nIntegrated Arduino Uno, motor-control circuits, servo actuation, and an I2C display to connect sensor inputs with physical outputs.\nEvaluated the prototype against railway-crossing safety requirements and accident data from Bangladesh.' }
+    { id: 'research1', title: 'Resource-Aware Data Processing', organization: 'Example University', location: 'Example City, Country', period: '2024 – Present', details: 'Designed an experimental plan comparing three example processing approaches.\nBuilt a prototype workflow and documented reproducible evaluation steps.\nSummarized trade-offs in runtime and resource use.' }
   ],
   publications: [
-    { id: 'pub1', title: 'Framework for Safe Communication in the Non-Indexed Web', authors: 'Hafizuddin and E. Fedorchenko', venue: 'Proceedings of the 7th International Conference on Neural Networks and Neurotechnologies (NeuroNT 2026), Saint Petersburg, Russia', year: '2026', details: 'First author · IEEE conference paper · Oral presentation, June 2026', url: 'https://doi.org/10.1109/NeuroNT71829.2026.11651421' },
-    { id: 'pub2', title: 'Learning from False Positives: Institutional Accountability in AI-Based Threat Detection', authors: 'Hafizuddin', venue: 'Proceedings of Sultangazin Readings 2026, Akhmet Baitursynuly Kostanay Regional University, Kazakhstan', year: '2026', details: 'Sole author · International conference proceedings paper (ISBN), November 2026', url: '' }
+    { id: 'pub1', title: 'An Illustrative Study of Efficient Data Workflows', authors: 'A. Example and B. Sample', venue: 'Example Conference Proceedings (fictional sample citation)', year: '2025', details: 'Fictional example — replace with a genuine publication or remove this entry.', url: '' }
   ],
   experience: [
-    { id: 'work1', title: 'Director of Operations', organization: 'ByteQuill', location: 'Dhaka, Bangladesh – Hybrid', period: 'February 2023 – November 2024', details: 'Managed web and network infrastructure across client environments and coordinated operational security practices.\nLed technical teams, client relationships, project delivery, and technology-roadmap planning.\nEstablished internal code-review, technical-documentation, and operational standards.' },
-    { id: 'work2', title: 'IT Supervisor', organization: 'Tagore University of Creative Arts (TUCA)', location: 'Dhaka, Bangladesh – Hybrid', period: 'November 2022 – November 2024', details: 'Coordinated security hardening across institutional servers, networks, and endpoints, including vulnerability assessment and firewall configuration.\nManaged server administration, databases, network operations, backup procedures, and disaster-recovery processes.\nSupervised institutional IT operations and coordinated technical support across academic and administrative units.' }
+    { id: 'work1', title: 'Research Assistant', organization: 'Example Research Lab', location: 'Example City, Country', period: '2023 – 2024', details: 'Supported literature reviews and experimental data collection.\nDeveloped small research tools and documented results for colleagues.' }
   ],
-  projects: [{ id: 'project1', title: 'Nomad Wealth – Personal Finance and Investment Tracking Platform', year: '2026', details: 'Web and native Android/iOS applications. Developed a cross-platform dashboard for account, transaction, budget, investment, and savings-goal tracking. Worked on JavaScript web, Kotlin Android, and SwiftUI iOS clients using shared Supabase authentication and finance workspaces.', url: 'https://github.com/hafizuddinso/nomad-wealth' }],
-  skillsSummary: 'Research and applied technical skills spanning security, privacy, software engineering and infrastructure.',
+  projects: [
+    { id: 'project1', title: 'Open Research Dashboard', year: '2024', details: 'Fictional sample project: a lightweight dashboard for presenting reproducible performance results.', url: '' }
+  ],
+  skillsSummary: 'Research skills in experimental design, data analysis and software development.',
   skills: [
-    { label: 'Security & Privacy', content: 'Tor, Onion Routing, Anonymous Networks, AES-GCM, ECDH, symmetric/asymmetric cryptography, hashing, SSL/TLS, VPN, IDS/IPS, Threat Modelling' },
-    { label: 'Security Tools', content: 'Wireshark, Burp Suite, Metasploit, Nmap, Tor stack, Web Crypto API' },
-    { label: 'Programming', content: 'Python, C/C++, JavaScript, Kotlin, Swift, SQL, Bash' },
-    { label: 'Systems & Infrastructure', content: 'Linux (Ubuntu, Kali), macOS, Windows Server, server administration, networking' },
-    { label: 'Development & Data', content: 'Git/GitHub, Supabase, REST APIs, MySQL, PostgreSQL, web application development' },
-    { label: 'Hardware & IoT', content: 'Arduino Uno, Raspberry Pi, microcontrollers, sensors, motor control, circuit integration, hardware troubleshooting' },
-    { label: 'Research', content: 'LaTeX, Experimental Design, Threat Analysis, Technical Documentation, Security Evaluation' }
+    { label: 'Programming', content: 'Python, JavaScript, SQL' },
+    { label: 'Research', content: 'Literature review, experimental design, reproducibility, academic writing' },
+    { label: 'Tools', content: 'Git, Linux, LaTeX, data visualization' }
   ],
-  teaching: 'CBTA Level-4 Certified Assessor & Trainer, National Skills Development Authority (NSDA), Bangladesh – qualified to train and assess learners in competency-based technical programmes.\nSupervised and coordinated technical team members and institutional IT users at ByteQuill and TUCA, providing hands-on guidance and technical support.',
-  awards: 'Open Doors Russian Olympiad Scholarship, 2024 – Full sponsorship for MSc studies at ETU LETI.\nInternational Volunteer Award, Bharat-Bangladesh Sanghati Foundation, 2024.\nNational Gold Medal in Inter University Sports Camp 2019, BIUSC 2019, Dhaka.',
-  certifications: 'Computer Operation Level-3 – NSDA, Bangladesh.\nIBM Cybersecurity Analyst Professional Certificate.\nPalo Alto Networks – Cybersecurity Fundamentals.\nComputer Network Security – University of Colorado Boulder.\nGoogle IT Support Professional Certificate.',
-  languages: 'Bengali: Native · English: Fluent · Hindi/Urdu: Conversational · Russian: Beginner · Spanish: Beginner',
-  references: '' // Private reference contact details are intentionally not seeded into public source.
+  teaching: 'Teaching assistant for an introductory computing course (fictional example).',
+  awards: 'Example Research Scholarship (fictional example; replace or delete).',
+  certifications: 'Example Professional Development Workshop (fictional example).',
+  languages: 'English: Fluent · Additional language: Intermediate',
+  references: ''
 };
 
 export const emptyEntry = (): Entry => ({ id: `e${Date.now()}${Math.random().toString(36).slice(2, 5)}`, title: '', organization: '', location: '', period: '', details: '' });
-export const emptyPublication = (): Publication => ({ id: `p${Date.now()}`, title: '', authors: '', venue: '', year: '', details: '', url: '' });
-export const emptyProject = (): Project => ({ id: `pr${Date.now()}`, title: '', year: '', details: '', url: '' });
-
+export const emptyPublication = (): Publication => ({ id: `p${Date.now()}${Math.random().toString(36).slice(2,5)}`, title: '', authors: '', venue: '', year: '', details: '', url: '' });
+export const emptyProject = (): Project => ({ id: `pr${Date.now()}${Math.random().toString(36).slice(2,5)}`, title: '', year: '', details: '', url: '' });
 export function safeExternalUrl(input: string): string | null {
   if (!input) return null;
   try { const url = new URL(input); return ['https:', 'http:'].includes(url.protocol) ? url.href : null; }
   catch { return null; }
 }
-export function normalizeSlug(s: string): string { return s.toLowerCase().trim().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').slice(0, 50); }

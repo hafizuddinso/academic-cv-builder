@@ -1,22 +1,19 @@
-# Deploy on Vercel
+# Deploy Academic CV Studio to Vercel (no database or account for visitors)
 
-1. Publish the source repository on GitHub. Do not commit `.env.local`, service-role keys, or OpenAI API keys.
-2. Open [Vercel → Add New Project](https://vercel.com/new) and import the repository.
-3. Use **Framework Preset: Next.js**, **Root Directory: `.`** and the default build command (`next build`).
-4. Add the `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` variables to your Vercel project's **Settings → Environment Variables** to enable cloud saving/public CV links. Add `OPENAI_API_KEY`, `OPENAI_MODEL`, and `AI_ALLOWED_EMAIL` only if enabling AI.
-5. Set `NEXT_PUBLIC_SITE_URL=https://YOUR-PROJECT.vercel.app` once Vercel has assigned your actual domain. Redeploy so the setting takes effect.
-6. In Supabase Authentication URL Configuration, allow your real Vercel deployment URL.
-7. Visit your deployed editor, sign in, publish, and share `https://YOUR-PROJECT.vercel.app/p/YOUR-SLUG`.
+1. Fork or push the repository to GitHub.
+2. Open https://vercel.com/new and import that GitHub repository.
+3. Select **Next.js**; project root `.` and default build command `next build`.
+4. **Do not add any environment variables.** No Supabase, API key or AI service is used.
+5. Click **Deploy**. Vercel assigns a working `*.vercel.app` URL.
+6. Test editing, browser auto-save, PDF export, JSON backup and link sharing.
 
-Vercel will show you the actual URL after the first successful deployment. This project does not include an already-created Vercel website.
+Visitors to your deployment need **no account**. Only the site owner needs a Vercel account to deploy the application.
 
-### Verify after deployment
+## Important limitations
 
-- Editor loads without configuration errors.
-- All six sections open and accept edits.
-- Print preview and **Save as PDF** work.
-- Supabase email sign-in works for your configured owner account.
-- Save draft, publish, unpublish, and public link work.
-- Your OpenAI key is never present in `NEXT_PUBLIC_` settings or committed files.
+- Local drafts stay in each visitor's browser and do not sync across devices.
+- Links contain compressed CV snapshots, not remotely stored profile records. Very long profiles may create overly long URLs; save JSON when needed.
+- Shared links are visible to anyone who receives the complete URL and cannot be revoked centrally.
+- To test a shared link, create one, open it in a different private browser tab and verify it loads and prints.
 
-The `/p/[slug]` page queries public profile data with Supabase's publishable key, subject to the database's Row Level Security.
+Do not add credentials to the repository. Optional custom domain configuration happens in Vercel Project Settings.

@@ -56,6 +56,6 @@ if git diff --cached --quiet; then
   exit 0
 fi
 
-git commit -m "Release Academic CV Studio v1.1"
+git commit -m "Release Academic CV Studio v2.0 (no login)"
 git push origin "$BRANCH"
 echo "Uploaded to $REPO_URL (branch $BRANCH). Backup: $BACKUP"

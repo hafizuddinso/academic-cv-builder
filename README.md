@@ -1,32 +1,26 @@
 # Academic CV Studio
 
-**Create a professional academic CV in six steps.** A minimal black-and-white, open-source CV builder for PhD applications, research positions, fellowships, and scholarships.
+**Free, open-source academic CV and portfolio builder — no signup, no database, no API keys.**
 
-![Academic CV Studio — black-and-white CV editor](design-preview.png)
+Create a clean black-and-white academic CV for PhD applications, scholarships, fellowships and research jobs in six simple steps. Everything runs in your browser.
 
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=nextdotjs)](https://nextjs.org/) [![Supabase](https://img.shields.io/badge/Supabase-Postgres-black?logo=supabase)](https://supabase.com/) [![Deploy on Vercel](https://img.shields.io/badge/Deploy-Vercel-black?logo=vercel)](https://vercel.com/) [![MIT License](https://img.shields.io/badge/License-MIT-black)](LICENSE)
+![Academic CV Studio screenshot with fictional example data](docs/example-preview.svg)
 
-> **Status:** Version 1.1 preview release. Editing, local autosave and browser-based PDF export work without an account. Cloud sync, public pages and AI rewrites require configuration. The source has been checked for missing files; a complete `npm run build` has **not** been verified in this preparation environment because the npm registry was unreachable.
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=nextdotjs)](https://nextjs.org/) [![Privacy-first](https://img.shields.io/badge/Privacy-browser%20only-black)](SECURITY.md) [![Deploy on Vercel](https://img.shields.io/badge/Deploy-Vercel-black?logo=vercel)](https://vercel.com/new) [![MIT License](https://img.shields.io/badge/License-MIT-black)](LICENSE)
 
-## Features
+## What you can do
 
-- **Six guided steps:** Identity & links → Research profile → Education → Research & publications → Experience & projects → Skills & awards.
-- **Academic-first structure:** Thesis, supervisors, publications/DOIs, research interests, scholarships and training.
-- **Live CV preview** with a monochrome layout designed for A4 printing.
-- **Save as PDF** using your browser's **Print → Save as PDF** (not server-side PDF generation).
-- **Automatic local drafts** even without Supabase, plus downloadable JSON backup.
-- **Optional private Supabase drafts** protected by Row Level Security (RLS).
-- **Optional public CV URL** at `/p/your-slug`. Nothing is published automatically.
-- **Optional AI writing assistant** offering concise, academic and impact-focused rewrites. Requires a server API key and authorized login.
-- **Privacy controls** for phone number and referee contacts; excluded by default.
+- **Six-step academic CV editor:** contact details, research summary, education, publications, experience, skills and scholarships.
+- **Live A4 CV preview** with a simple black-and-white design.
+- **Save as PDF** through your browser's print dialog (choose *Save as PDF*).
+- **Auto-save locally** in your current browser (via `localStorage`), plus export/import JSON backup.
+- **Share a CV without an account:** generate a link containing a compressed snapshot of your CV; the recipient gets a read-only view and PDF option.
+- **Offline writing ideas:** concise, academic and structured text transformations. These are rule-based suggestions, **not AI-generated text**.
+- **Fictional starter CV:** all names, universities, locations, publications and projects are deliberately made-up sample data.
 
-## Preview
+## Start locally
 
-Open [`design-preview.html`](design-preview.html) locally to review a **static design mock-up**. For the functioning Next.js app, use the setup below.
-
-## Quick start
-
-Requirements: Node.js **20+**, npm.
+Requires Node.js 20 or later.
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/academic-cv-builder.git
@@ -35,75 +29,48 @@ npm install
 npm run dev
 ```
 
-Open **http://localhost:3000**. No environment variables are necessary for local editing, preview or browser PDF printing.
+Open **http://localhost:3000**. No `.env` file or credentials are needed.
 
-**This repository includes the author's CV as sample data** in [`lib/cv.ts`](lib/cv.ts). Replace the sample before distributing a customized fork. Phone and reference contact details are not included in source, but sample academic details and a public email are intentionally included. For a blank template, replace `starterCV` with your own information.
+## Deploy free with Vercel
 
-## Supabase: private drafts and published public pages
+1. Fork this repository to your GitHub account.
+2. Go to [vercel.com/new](https://vercel.com/new), import the fork, and select the **Next.js** framework.
+3. Leave **Environment Variables empty**, then deploy.
+4. Open your assigned `*.vercel.app` URL and begin editing.
 
-1. Create a [Supabase project](https://supabase.com/dashboard).
-2. Open its **SQL Editor** and run [`supabase/schema.sql`](supabase/schema.sql).
-3. The default configuration is **owner-only**: the SQL permits cloud editing only for `hafizuddin@upc.edu`. **Before running it**, replace this email if you are deploying your own copy.
-4. Enable Supabase **Authentication → Email (OTP/magic link)** and add your development and production URLs in **Authentication → URL Configuration**.
-5. Copy `.env.example` to `.env.local`; set the project URL and **publishable / anon key** (never the service role key).
-6. Restart the app; log in with the authorized email; save a draft, then explicitly **Publish portfolio**.
+Detailed instructions: [docs/VERCEL_DEPLOYMENT.md](docs/VERCEL_DEPLOYMENT.md).
 
-Full walkthrough: [`docs/SUPABASE_SETUP.md`](docs/SUPABASE_SETUP.md).
+## Sharing and privacy
 
-### Environment variables
+Your draft is stored **only in the browser** where you edit it. No server account, CV database, Supabase project, or API key is used.
 
-| Variable | Required? | Where used |
-|---|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | Cloud features | Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Cloud features | Supabase publishable / anon key, protected by RLS |
-| `NEXT_PUBLIC_SITE_URL` | Optional | Canonical public website URL (for sharing metadata) |
-| `OPENAI_API_KEY` | AI only | **Server-side secret**; never expose to browser |
-| `OPENAI_MODEL` | AI only | Chat completions model; default `gpt-4.1-mini` |
-| `AI_ALLOWED_EMAIL` | AI only | Email authorized to spend AI API credits |
+The **Create share link** button compresses your CV data and embeds it in the URL **fragment** (`#cv=...`), which browsers do not send in normal HTTP requests. **Anyone who receives the complete link can read that snapshot**, including any phone number or references you opted into. Because the CV is embedded in the URL, links can be long; very large CVs may exceed supported length. Changing a CV does not alter an already shared link. To revoke sharing, stop distributing that link; **there is no server-side revocation mechanism**. Do not include sensitive information.
 
-AI-generated wording is a **suggestion**, not fact verification. Check everything before publishing an academic CV.
+For a portable copy you control, use **Export backup** to download your CV JSON and **Import JSON** to restore it later. Browser storage can be cleared, so keep backups.
 
-## Deploy to Vercel
+The included [example data](lib/cv.ts) is fictional and contains no applicant's real personal information. **Please replace or remove the example publication and award; they are not actual achievements.**
 
-1. Push repository files to GitHub.
-2. Import the repository in [Vercel](https://vercel.com/new), framework **Next.js**, root directory `.`.
-3. Set the environment variables in **Project → Settings → Environment Variables**, then deploy/redeploy.
-4. In Supabase Auth URL Configuration, add your actual `https://YOUR-PROJECT.vercel.app` address as the Site URL and an allowed Redirect URL.
-5. Sign in, publish from the editor, and visit `https://YOUR-PROJECT.vercel.app/p/your-slug`.
-
-A live URL **cannot be determined until you deploy**. More details: [`docs/VERCEL_DEPLOYMENT.md`](docs/VERCEL_DEPLOYMENT.md).
-
-## Updating an existing GitHub repository
-
-To fully replace all tracked files, use [`docs/REPLACE_EXISTING_REPO.md`](docs/REPLACE_EXISTING_REPO.md) or the confirmation-protected [`scripts/replace-existing-repo.sh`](scripts/replace-existing-repo.sh). **Back up your repository first**: ordinary GitHub “Upload files” does not automatically delete outdated files.
-
-## Project structure
+## Repo structure
 
 ```text
-app/page.tsx                 Six-step editor and publishing UI
-app/p/[slug]/page.tsx        Public CV webpage
-app/api/rewrite/route.ts     Restricted server-side AI rewriting
-components/CVDocument.tsx   A4 printable academic CV
-lib/cv.ts                   Data types and sample academic resume
-lib/supabase.ts             Browser Supabase client
-supabase/schema.sql         Tables, RLS and update triggers
-docs/                       Supabase, Vercel and GitHub guides
-.github/workflows/ci.yml    Build and type-check automation
+app/page.tsx            Six-step editor, offline suggestions, export/import and sharing
+app/share/page.tsx      Read-only CV viewer for shared links
+components/CVDocument.tsx   Printable CV layout
+lib/cv.ts               Types and entirely fictional starter data
+lib/share.ts            Browser-only gzip/URL encoding
+app/globals.css         Monochrome responsive layout and print styles
+.github/workflows/ci.yml  TypeScript/build checks
 ```
 
-## Roadmap
+## What this release does not do
 
-- [x] Six-step editor and live print preview
-- [x] Local autosave and JSON backup
-- [x] Supabase private drafts and opt-in published profiles
-- [x] Optional AI rewrite variations
-- [ ] Multiple CV templates and version history
-- [ ] Direct generated PDF download without browser print
-- [ ] Cover-letter builder
-- [ ] Multi-user SaaS support (the included SQL is deliberately owner-only)
+- No accounts, authentication, Supabase, cloud backups or profile database.
+- No AI text generation; offline suggestions simply reformat existing text.
+- No hosted *short* per-user profile URLs or search-indexable personal portfolio pages. Shared links contain the CV snapshot in the link itself.
+- No server PDF generation; printing uses the browser's PDF support.
 
-## Contributing and license
+## Contribute
 
-Issues, feedback, accessibility fixes and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md). Licensed under the [MIT License](LICENSE).
+Improvements and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md). MIT licensed.
 
-**Keywords:** academic CV · PhD resume · scholarship application · researcher portfolio · open-source resume builder · AI writing assistant · PDF export · Next.js · Supabase · Vercel.
+**Topics:** `academic-cv` `resume-builder` `phd` `scholarship` `researcher-portfolio` `free-cv-builder` `pdf-export` `privacy-first` `nextjs` `vercel` `open-source`
